@@ -70,7 +70,7 @@ npm run vite preview
 
 - **Why TypeScript:** in summary, to take advantage of editor autocompletions and catching typos in the editor, rather than eventually seeing them in the browser's dev tools. These two advantages allow to prototype fast and without fear.
 
-- **The JavaScript version of this codebase can be produced the `transpile` package script.** The JavaScript output is nearly similar to the TypeScript version, and is clearly readable.
+- **The JavaScript version of this codebase can be produced with the `transpile` package script.** The JavaScript output is nearly similar to the TypeScript version, and is clearly readable.
 
 - No CSS framework is used, and the styling is mostly custom. [Tailwind CSS](https://tailwindcss.com/) is used to write styles using utility classes, enabling rapid protoyping. Some components are based on [Headless UI](https://headlessui.dev/), a collection of unstyled components. [Autoprefixer](https://github.com/postcss/autoprefixer) is automatically applied to all CSS.
 
