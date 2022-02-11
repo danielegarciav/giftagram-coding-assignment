@@ -84,7 +84,7 @@ npm run vite preview
 
 The web app shows the product page for product ID 1006 (_"Mary MacLeod's 3 Quart Shortbread Jar"_) by default. When manually testing the app, you can check the page for different products using the `productId` URL search parameter. For example:
 
-```http
+```bash
 # Assuming web app running at localhost:3000
 # Shows "The Right Hand Gal Solid Gold Initial Necklace"
 http://localhost:3000/?productId=4487
