@@ -1,10 +1,11 @@
 import { CSSProperties, FC } from 'react';
 import { Lazy, Navigation, Pagination, Zoom } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/lazy';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
+
+import 'swiper/swiper.min.css';
+import 'swiper/modules/lazy/lazy.min.css';
+import 'swiper/modules/navigation/navigation.min.css';
+import 'swiper/modules/pagination/pagination.min.css';
 
 interface Props {
   imageUrls: string[];
