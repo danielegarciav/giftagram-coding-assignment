@@ -8,25 +8,24 @@ interface Props {
 }
 
 /**
- * Converts double line feeds into paragraph breaks and single line feeds into line breaks.
+ * Converts double line feeds (`\r\n\r\n`) into paragraph breaks and
+ * single line feeds (`\r\n`) into line breaks.
+ *
+ * Returns an array of paragraphs, in which each paragraph is an array of text lines.
+ *
+ * @example
+ * Given a string representing two paragraphs, with two lines in each paragraph,
+ * the output would look like the this:
+ * ```
+ * [[line1, line2], [line3, line4]]
+ * ```
+ * where each `lineX` is of type `string`.
  */
-const apiTextToNodes = (text: string, paragraphClassName?: string): ReactNode[] =>
+export const splitTextIntoParagraphsAndLines = (text: string): string[][] =>
   text
     .trim()
     .split('\r\n\r\n')
-    .map((pText, pIndex) => (
-      <p key={pIndex} className={paragraphClassName}>
-        {pText
-          .trim()
-          .split('\r\n')
-          .map((spanText, spanIndex) => (
-            <span key={spanIndex * 2}>
-              {spanText}
-              <br key={spanIndex * 2 + 1} />
-            </span>
-          ))}
-      </p>
-    ));
+    .map(paragraphText => paragraphText.trim().split('\r\n'));
 
 export const ProductView: FC<Props> = ({ product }) => {
   return (
@@ -47,7 +46,16 @@ export const ProductView: FC<Props> = ({ product }) => {
           </h4>
           {product ? (
             <div className="flex flex-col gap-4">
-              {apiTextToNodes(product.description, 'text-neutral-600 leading-relaxed')}
+              {splitTextIntoParagraphsAndLines(product.description).map((paragraphLines, paragraphIndex) => (
+                <p key={paragraphIndex} className="text-neutral-600 leading-relaxed">
+                  {paragraphLines.map((lineText, lineIndex) => (
+                    <span key={lineIndex}>
+                      {lineText}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              ))}
             </div>
           ) : (
             <>
