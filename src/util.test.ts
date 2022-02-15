@@ -32,16 +32,18 @@ afterAll(() => {
   window.location = originalLocationObj;
 });
 
-test('getProductIdFromCurrentUrl: returns proper ID from valid URL', () => {
-  setWindowLocation('http://localhost:3000?productId=12345');
-  expect(getProductIdFromCurrentUrl()).toBe(12345);
-});
+describe('getProductIdFromCurrentUrl', () => {
+  it('returns proper ID from valid URL', () => {
+    setWindowLocation('http://localhost:3000?productId=12345');
+    expect(getProductIdFromCurrentUrl()).toBe(12345);
+  });
 
-test('getProductIdFromCurrentUrl: returns NaN on invalid URL', () => {
-  setWindowLocation('http://localhost:3000?productId=invalid');
-  expect(getProductIdFromCurrentUrl()).toBeNaN();
-});
+  it('returns NaN on invalid URL', () => {
+    setWindowLocation('http://localhost:3000?productId=invalid');
+    expect(getProductIdFromCurrentUrl()).toBeNaN();
+  });
 
-test('getProductIdFromCurrentUrl: defaults to ID 1006', () => {
-  expect(getProductIdFromCurrentUrl()).toBe(1006);
+  it('defaults to ID 1006', () => {
+    expect(getProductIdFromCurrentUrl()).toBe(1006);
+  });
 });
