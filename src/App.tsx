@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import usePromise from 'react-use-promise';
-import { fetchProductData, fetchRelatedProducts, ProductData } from './api/fetch';
+import { fetchProductData, fetchRelatedProducts } from './api/fetch';
 import { AboutSection } from './components/about/AboutSection';
 import { MiniFaq } from './components/about/MiniFaq';
 import { ProductBreadcrumbs } from './components/Breadcumbs';
