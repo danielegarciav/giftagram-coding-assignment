@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "fix-deps": "node fix-deps.mjs",
+    "postinstall": "run-s fix-deps",
+    "dev": "run-s fix-deps && vite",
+    "build": "run-s fix-deps && tsc && vite build",
     "preview": "vite preview",
-    "test:unit": "jest",
+    "test:unit": "run-s fix-deps && jest",
     "transpile": "tsc -P tsconfig.transpile.json && prettier --write transpiled"
   },
   "dependencies": {
@@ -30,6 +32,7 @@
     "autoprefixer": "^10.4.2",
     "jest": "^27.5.1",
     "jest-css-modules": "^2.1.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.19",
